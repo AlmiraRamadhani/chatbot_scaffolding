@@ -148,7 +148,7 @@ function panjangVektor()
 
 function hitungSimilarity($query)
 {
-    include '../koneksi.php';
+    include 'koneksi.php';
     //Ambil jumlah total dokumen yang telah diindex
     $resn = mysqli_query($koneksi, "SELECT COUNT(*) AS n FROM tb_vektor");
     $rown = mysqli_fetch_array($resn);

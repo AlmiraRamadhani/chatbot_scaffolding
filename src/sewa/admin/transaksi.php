@@ -20,7 +20,6 @@
 					<th>Tgl. Selesai</th>
 					<th>Status Pinjam</th>
 					<th>Status Bayar</th>
-					<th>Waktu</th>
 					<th width="30%">OPSI</th>
 				</tr>
 
@@ -52,20 +51,10 @@
 							<?php } ?>
 						</td>
 						<td>
-							<?php
-
-							$tanggal1 = $fdate;
-							$tanggal2 = $ldate;
-
-							$perbedaan = $tanggal2->diff($tanggal1)->format("%a");
-
-							?>
-						</td>
-						<td>
 							<a href="detail_transaksi.php?id=<?php echo $d['id']; ?>" class="btn btn-sm">Detail</a>
 							<a href="transaksi_edit.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info">Edit</a>
 							<a href="transaksi_hapus.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger">Batalkan</a>
-						</td>
+							</>
 					</tr>
 				<?php
 				}

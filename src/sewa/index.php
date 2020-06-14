@@ -80,10 +80,10 @@
 				<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
 				<p>Lets get in touch and talk about your next project.</p>
 				<form method="post" action="komentar_aksi.php">
-					<input class="w3-input w3-section w3-border" type="text" placeholder="Name" id="comment_name" class="form-control">
-					<input class="w3-input w3-section w3-border" type="email" placeholder="Email" id="comment_email" class="form-control">
-					<input class="w3-input w3-section w3-border" type="text" placeholder="Subject" id="comment_subject" class="form-control">
-					<input class="w3-input w3-section w3-border" type="text" placeholder="Comment" id="comment" class="form-control">
+					<input class="w3-input w3-section w3-border" type="text" id="comment_name" class="form-control" name="comment_name" placeholder="Masukkan Nama">
+					<input class="w3-input w3-section w3-border" type="email" id="comment_email" class="form-control" name="comment_email" placeholder="Masukkan Email">
+					<input class="w3-input w3-section w3-border" type="text" id="comment_subject" class="form-control" name="comment_subject" placeholder="Masukkan Subyek">
+					<input class="w3-input w3-section w3-border" type="text" id="comment" class="form-control" name="comment" placeholder="Masukkan Komentar">
 					<button class="w3-button w3-black w3-section" type="submit">
 						<i class="fa fa-paper-plane"></i> SEND MESSAGE
 					</button>

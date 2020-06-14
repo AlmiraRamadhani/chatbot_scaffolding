@@ -48,9 +48,34 @@ include '../koneksi.php';
 
 					<br>
 
+					<table class="table table-bordered table-striped" id="tbl_barang">
+						<thead>
+							<tr>
+								<th width="70%">Nama Barang</th>
+								<th width="10%">Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<select name="barang[]" class="form-control select-barang" required>
+										<?php
+										$dataBarang = mysqli_query($koneksi, "SELECT * FROM tb_product");
+										while ($db = mysqli_fetch_array($dataBarang)) {
+										?>
+											<option value="<?= $db['product_id']; ?>"><?= $db['product_name']; ?></option>
+										<?php } ?>
+									</select>
+								</td>
+								<td><input type="number" name="qty" id="qty[]" class="form-control"></td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="button" name="add" id="add" class="btn btn-sm btn-success float-right">
+						<i class="fas fa-fw fa-plus"></i> Tambah Barang
+					</button>
 
-
-					<br />
+					<br><br>
 
 					<input type="submit" class="btn btn-primary" value="Simpan">
 				</form>
@@ -62,19 +87,3 @@ include '../koneksi.php';
 </div>
 
 <?php include 'footer.php'; ?>
-
-<!-- <script>
-	function tampilkan() {
-
-		var kategori = document.getElementById("tbl_barang").select1.value;
-		var p_kontainer = document.getElementById("container");
-
-		if (kategori == "owp") {
-			p_kontainer.innerHTML = <?php $dataBarang = mysqli_query($koneksi, "SELECT product_owp FROM tb_product where product_id=product_owp"); ?>;
-		} else if (kategori == "twp") {
-			p_kontainer.innerHTML = "Bandung kota kembang";
-		} else if (kategori == "omp") {
-			p_kontainer.innerHTML = "Bogor kota hujan";
-		}
-	}
-</script> -->

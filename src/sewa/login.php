@@ -71,6 +71,8 @@
                             </label>
                         </div> -->
                         <input type="submit" class="btn btn-primary" value="Login">
+                        <br><br>
+                        <a href="index.php" class="btn btn-info">Back to Home</a>
                     </div>
                     <br />
                 </div>
