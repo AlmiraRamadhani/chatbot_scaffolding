@@ -1,9 +1,8 @@
-</body>
-
-</html>
+<script script src="../assets/js/select2.min.js">
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.select-tb_product').select2();
+        $('.select-barang').select2();
         var i = 1;
         $('#add').click(function() {
             i++;
@@ -14,3 +13,6 @@
         });
     });
 </script>
+</body>
+
+</html>

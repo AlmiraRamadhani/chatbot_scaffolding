@@ -13,15 +13,11 @@ $hari = date_diff($awal, $akhir);
 
 //$datetime1 = date_create('2017-06-28');
 // $datetime2 = date_create('2018-06-28');
-
 // calculates the difference between DateTime objects 
 // $interval = date_diff($datetime1, $datetime2);
-
 // printing result in days format 
 // echo $interval->format('%R%a days');
 // echo $hari->format('%R%a days');
-
-
 //echo  var_dump($hari);
 //die();
 if ($hari <= 7) {
@@ -31,15 +27,17 @@ if ($hari <= 7) {
 } elseif ($hari >= 15 && $hari <= 30) {
     $query = "SELECT product_omp FROM tb_product where product_id=product_id";
 }
-// $totalbayar =;
 //masuk db
-// $last_id = mysqli_insert_id($koneksi);
-// $barang = $_POST['product_name'];
-// $price = $_POST['price'];
-// $qty = $_POST['quantity'];
-// for ($i = 0; $i < count($barang); $i++) {
-//     if ($barang[$i] != "") {
-//         mysqli_query($koneksi, "INSERT INTO tb_detail VALUES ('', '$last_id', '$barang[$i]', '$price[$i]', '$qty[$i]')");
-//     }
-// }
+$last_id = mysqli_insert_id($koneksi);
+$barang = $_POST['product_name'];
+$price = $_POST['price'];
+$qty = $_POST['quantity'];
+for ($i = 0; $i < count($barang); $i++) {
+    if ($barang[$i] != "") {
+        mysqli_query($koneksi, "INSERT INTO tb_detail VALUES ('', '$last_id', '$barang[$i]', '$price[$i]', '$qty[$i]')");
+    }
+}
+// $totalharga = $qty * product_owp
+
+
 header("location:transaksi.php?pesan=tambah");

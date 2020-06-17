@@ -5,6 +5,7 @@
 	<title>Sistem Informasi Penyewaan Scaffolding Samarinda</title>
 
 	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+	<link rel="stylesheet" href="../assets/css/select2.min.css">
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
 
@@ -31,7 +32,6 @@
 				</button>
 				<a class="navbar-brand" href="index.php">PENYEWAAN SCAFFOLDING</a>
 			</div>
-
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.php"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
