@@ -21,16 +21,16 @@ $hari = date_diff($awal, $akhir);
 //echo  var_dump($hari);
 //die();
 if ($hari <= 7) {
-    $query = "SELECT product_owp FROM tb_product where product_id=product_id";
+    $query = mysqli_query($koneksi, "SELECT product_owp FROM tb_product where product_id=product_id");
 } elseif ($hari >= 8 && $hari <= 14) {
-    $query = "SELECT product_twp FROM tb_product where product_id=product_id";
+    $query = mysqli_query($koneksi, "SELECT product_twp FROM tb_product where product_id=product_id");
 } elseif ($hari >= 15 && $hari <= 30) {
-    $query = "SELECT product_omp FROM tb_product where product_id=product_id";
+    $query = mysqli_query($koneksi, "SELECT product_omp FROM tb_product where product_id=product_id");
 }
 //masuk db
 $last_id = mysqli_insert_id($koneksi);
 $barang = $_POST['product_name'];
-$price = $_POST['price'];
+$price = mysqli_fetch_array($query);
 $qty = $_POST['quantity'];
 for ($i = 0; $i < count($barang); $i++) {
     if ($barang[$i] != "") {

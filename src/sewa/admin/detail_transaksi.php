@@ -53,15 +53,17 @@
 							} ?>
 						</td>
 					</tr>
-					<tr>
-						<td width="10%"><a href="keranjang1.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info">Keranjang 1 Minggu</a></td>
-					</tr>
-					<tr>
-						<td><a href="keranjang2.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info">Keranjang 2 Minggu</a></td>
-					</tr>
-					<tr>
-						<td><a href="keranjang3.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info">Keranjang 1 Bulan</a></td>
-					</tr>
+					<!-- <tr>
+						<td width="10%">Total Bayar</td>
+						<td>
+							<?php
+							if ($d['paidstatus']  == "0") {
+								echo "<div>DIPINJAM</div>";
+							} else if ($d['paidstatus'] == "1") {
+								echo "<div>SELESAI</div>";
+							} ?>
+						</td>
+					</tr> -->
 					<tr>
 						<td><a href="transaksi.php">Kembali</a></td>
 					</tr>
