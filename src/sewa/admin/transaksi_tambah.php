@@ -29,7 +29,7 @@ include '../koneksi.php';
 							// mengubah data ke array dan menampilkannya dengan perulangan while
 							while ($d = mysqli_fetch_array($data)) {
 							?>
-								<option value="<?php echo $d['customer_id']; ?>"><?php echo $d['customer_name']; ?></option>
+							<option value="<?php echo $d['customer_id']; ?>"><?php echo $d['customer_name']; ?></option>
 							<?php
 							}
 							?>
@@ -63,11 +63,11 @@ include '../koneksi.php';
 										$dataBarang = mysqli_query($koneksi, "SELECT * FROM tb_product");
 										while ($db = mysqli_fetch_array($dataBarang)) {
 										?>
-											<option value="<?= $db['product_id']; ?>"><?= $db['product_name']; ?></option>
+										<option value="<?= $db['product_id']; ?>"><?= $db['product_name']; ?></option>
 										<?php } ?>
 									</select>
 								</td>
-								<td><input type="number" name="qty" id="qty[]" class="form-control"></td>
+								<td><input type="number" name="qty[]" id="qty[]" class="form-control"></td>
 							</tr>
 						</tbody>
 					</table>
