@@ -6,17 +6,12 @@
 			<h4>Data Transaksi Penyewaan</h4>
 		</div>
 		<div class="panel-body">
-
-			<br />
-			<br />
-
 			<?php
 			include '../koneksi.php';
 			$id = $_GET['id'];
 			$data = mysqli_query($koneksi, "SELECT t.*, c.* FROM tb_transaction AS t LEFT JOIN tb_customer AS c ON t.id_cust = c.customer_id where id='$id'");
 			while ($d = mysqli_fetch_array($data)) {
 			?>
-
 				<table class="table" id="tb-transaksi">
 					<tr>
 						<td width="15%">Nama Pelanggan</td>
@@ -56,35 +51,52 @@
 			<?php
 			}
 			?>
-			<table>
+			<table class="table">
 				<tr>
 					<th width="1%">No</th>
 					<th width="15%">Nama Produk</th>
 					<th width="10%">Jumlah</th>
+					<th width="10%">Harga</th>
 				</tr>
 				<?php
 				include '../koneksi.php';
-				$product_id = $_GET['product_id'];
-				$query = mysqli_query($koneksi, "SELECT d.*, p.* FROM tb_detail AS d LEFT JOIN tb_product AS p ON d.product_id = p.product_id where product_id='$product_id'");
+				// $query = mysqli_query($koneksi, "SELECT d.*, p.*, t.* FROM tb_detail AS d 	JOIN tb_product AS p ON d.product_id = p.product_id, JOIN tb_transaction AS t ON d.transaction_id = t.id WHERE transaction_id = '$id'");
+				$query = mysqli_query($koneksi, "SELECT * FROM tb_detail as d JOIN tb_product as p ON d.product_id=p.product_id JOIN tb_transaction as t ON t.id=d.transaction_id WHERE transaction_id = '$id'");
 				$no = 1;
-				while ($d = mysqli_fetch_array($query)) {
+				$total = 0;
+				while ($p = mysqli_fetch_array($query)) {
 				?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $d['product_name']; ?></td>
-						<td><?php echo $d['quantity']; ?></td>
-					</tr>
-					<tr>
+						<td><?= $p['product_name']; ?></td>
+						<td><?php echo $p['quantity']; ?></td>
 						<td>
-							Total Bayar
-						</td>
-						<td>
+							<?php
+							$awal = strtotime($p['fdate']);
+							$akhir = strtotime($p['ldate']);
+							$diff = $akhir - $awal;
+							$juml_hari = ceil($diff / 86400);
+							if ($juml_hari <= 7) {
+								$harga = $p['product_owp'] * $p['quantity'];
+								//$harga = $p['product_owp'];
+							} elseif ($juml_hari > 7 && $juml_hari <= 14) {
+								$harga = $p['product_twp'] * $p['quantity'];
+							} elseif ($juml_hari > 14 && $juml_hari <= 30) {
+								$harga = $p['product_omp'] * $p['quantity'];
+							}
 
+							echo 'Rp. ' . number_format($harga, 0, ',', '.');
+							?>
 						</td>
 					</tr>
 				<?php
+					$total += $harga;
 				}
 				?>
+				<tr>
+					<td colspan="3"><b>Total Harga</b></td>
+					<td><b>Rp. <?= number_format($total, 0, ',', '.'); ?></b></td>
+				</tr>
 			</table>
 			<a href="transaksi.php">Kembali</a>
 		</div>

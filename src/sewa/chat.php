@@ -39,6 +39,7 @@
                     <form action="" method="post" class="form-inline">
                         <input type="text" name="keyword" id="keyword" class="form-control mr-2" placeholder="Silahkan bertanya" required>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        <input type="button" value="Reset" onclick="javascript:eraseText();">
                     </form>
 
                     <textarea name="respon" id="respon" cols="30" rows="10" class="form-control mt-3" readonly>
@@ -53,6 +54,11 @@
             </div>
         </div>
     </div>
+    <script>
+        function eraseText() {
+            document.getElementById("respon").value = "";
+        }
+    </script>
 
 </body>
 

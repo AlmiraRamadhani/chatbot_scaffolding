@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2020 at 05:10 PM
+-- Generation Time: Jun 22, 2020 at 06:15 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -73,7 +73,12 @@ INSERT INTO `tb_cache` (`id`, `query`, `doc_id`, `nilai`) VALUES
 (11, 'selamat siang', 1, 0.141422),
 (12, 'selamat siang', 2, 1),
 (13, 'selamat siang', 3, 0.1),
-(14, 'selamat siang', 4, 0.1);
+(14, 'selamat siang', 4, 0.1),
+(15, 'mau meminjam main frame', 0, 0),
+(16, 'pinjam main frame', 9, 0.192847),
+(17, 'menyewa main frame', 9, 0.192847),
+(18, 'mau meminjam scaffolding', 0, 0),
+(19, 'mau sewa scaffolding', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -94,8 +99,7 @@ CREATE TABLE `tb_comment` (
 --
 
 INSERT INTO `tb_comment` (`comment_id`, `comment_name`, `comment_email`, `comment_subject`, `comment`) VALUES
-(1, '', '', '', ''),
-(2, '', '', '', '');
+(3, 'Okky Indra', 'okkyindra@gmail.com', 'Subjek', 'komentar');
 
 -- --------------------------------------------------------
 
@@ -141,7 +145,17 @@ CREATE TABLE `tb_detail` (
 --
 
 INSERT INTO `tb_detail` (`detail_id`, `transaction_id`, `product_id`, `quantity`) VALUES
-(1, 7, '1', 2);
+(1, 7, '1', 2),
+(2, 8, '1', 3),
+(3, 8, '3', 1),
+(4, 0, '1', 5),
+(5, 0, '2', 5),
+(6, 0, '1', 1),
+(7, 9, '1', 3),
+(8, 9, '2', 3),
+(9, 10, '1', 3),
+(10, 10, '5', 3),
+(11, 10, '13', 2);
 
 -- --------------------------------------------------------
 
@@ -166,7 +180,8 @@ INSERT INTO `tb_dokumen` (`id`, `dokumen`) VALUES
 (5, 'Penyewaan buka pukul 8 pagi'),
 (6, 'Penyewaan buka pada hari Senin, Selasa, Rabu, Kamis, dan Sabtu'),
 (7, 'hari jumat dan minggu libur'),
-(9, 'harga sewa main frame 1,7 selama 1 minggu 30.000 rupiah');
+(9, 'harga sewa main frame 1,7 selama 1 minggu 30.000 rupiah, selama 2 minggu 40.000 rupiah, selama 1 bulan 50.000 rupiah'),
+(11, 'scaffolding yang tersedia diantaranya 1 set main frame 1,7 meter, 1 set main frame 1,9 meter, cat walk, tangga, jack base 60 cm, pipa support, u head jack 60 cm, roda, leader 0,9 dengan join pin, leader 0,9 tanpa join pin');
 
 -- --------------------------------------------------------
 
@@ -271,6 +286,14 @@ CREATE TABLE `tb_stem` (
   `stem` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_stem`
+--
+
+INSERT INTO `tb_stem` (`id`, `term`, `stem`) VALUES
+(1, 'meminjam', 'pinjam'),
+(2, 'menyewa', 'sewa');
+
 -- --------------------------------------------------------
 
 --
@@ -283,19 +306,19 @@ CREATE TABLE `tb_transaction` (
   `fdate` date NOT NULL,
   `ldate` date NOT NULL,
   `loanstatus` varchar(20) NOT NULL,
-  `paidstatus` varchar(20) NOT NULL
+  `paidstatus` varchar(20) NOT NULL,
+  `totalharga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_transaction`
 --
 
-INSERT INTO `tb_transaction` (`id`, `id_cust`, `fdate`, `ldate`, `loanstatus`, `paidstatus`) VALUES
-(1, 3, '2020-06-04', '2020-06-10', '1', '0'),
-(3, 2, '2020-06-04', '2020-06-10', '1', ''),
-(5, 3, '2020-06-09', '2020-06-15', '1', '1'),
-(6, 5, '2020-05-01', '2020-06-01', '0', '1'),
-(7, 3, '2020-06-01', '2020-06-07', '0', '0');
+INSERT INTO `tb_transaction` (`id`, `id_cust`, `fdate`, `ldate`, `loanstatus`, `paidstatus`, `totalharga`) VALUES
+(7, 3, '2020-06-01', '2020-06-07', '0', '1', 0),
+(8, 3, '2020-06-04', '2020-06-10', '0', '0', 0),
+(9, 2, '2020-06-01', '2020-06-14', '0', '0', 0),
+(10, 5, '2020-06-01', '2020-06-30', '0', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -406,13 +429,13 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_comment`
 --
 ALTER TABLE `tb_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_customer`
@@ -424,13 +447,13 @@ ALTER TABLE `tb_customer`
 -- AUTO_INCREMENT for table `tb_detail`
 --
 ALTER TABLE `tb_detail`
-  MODIFY `detail_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `detail_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_dokumen`
 --
 ALTER TABLE `tb_dokumen`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_index`
@@ -448,13 +471,13 @@ ALTER TABLE `tb_product`
 -- AUTO_INCREMENT for table `tb_stem`
 --
 ALTER TABLE `tb_stem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_transaction`
 --
 ALTER TABLE `tb_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_vektor`
