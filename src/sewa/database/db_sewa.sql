@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2020 at 07:51 AM
+-- Generation Time: Jun 21, 2020 at 05:10 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -133,9 +133,15 @@ CREATE TABLE `tb_detail` (
   `detail_id` int(10) NOT NULL,
   `transaction_id` int(11) NOT NULL,
   `product_id` varchar(5) NOT NULL,
-  `price` int(15) NOT NULL,
   `quantity` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_detail`
+--
+
+INSERT INTO `tb_detail` (`detail_id`, `transaction_id`, `product_id`, `quantity`) VALUES
+(1, 7, '1', 2);
 
 -- --------------------------------------------------------
 
@@ -277,19 +283,19 @@ CREATE TABLE `tb_transaction` (
   `fdate` date NOT NULL,
   `ldate` date NOT NULL,
   `loanstatus` varchar(20) NOT NULL,
-  `paidstatus` varchar(20) NOT NULL,
-  `totalharga` int(15) NOT NULL
+  `paidstatus` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_transaction`
 --
 
-INSERT INTO `tb_transaction` (`id`, `id_cust`, `fdate`, `ldate`, `loanstatus`, `paidstatus`, `totalharga`) VALUES
-(1, 3, '2020-06-04', '2020-06-10', '1', '0', 0),
-(3, 2, '2020-06-04', '2020-06-10', '1', '', 0),
-(5, 3, '2020-06-09', '2020-06-15', '1', '1', 0),
-(6, 5, '2020-05-01', '2020-06-01', '0', '1', 0);
+INSERT INTO `tb_transaction` (`id`, `id_cust`, `fdate`, `ldate`, `loanstatus`, `paidstatus`) VALUES
+(1, 3, '2020-06-04', '2020-06-10', '1', '0'),
+(3, 2, '2020-06-04', '2020-06-10', '1', ''),
+(5, 3, '2020-06-09', '2020-06-15', '1', '1'),
+(6, 5, '2020-05-01', '2020-06-01', '0', '1'),
+(7, 3, '2020-06-01', '2020-06-07', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -418,7 +424,7 @@ ALTER TABLE `tb_customer`
 -- AUTO_INCREMENT for table `tb_detail`
 --
 ALTER TABLE `tb_detail`
-  MODIFY `detail_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `detail_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_dokumen`
@@ -448,7 +454,7 @@ ALTER TABLE `tb_stem`
 -- AUTO_INCREMENT for table `tb_transaction`
 --
 ALTER TABLE `tb_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_vektor`

@@ -14,13 +14,12 @@
 			include '../koneksi.php';
 			$id = $_GET['id'];
 			$data = mysqli_query($koneksi, "SELECT t.*, c.* FROM tb_transaction AS t LEFT JOIN tb_customer AS c ON t.id_cust = c.customer_id where id='$id'");
-			$no = 1;
 			while ($d = mysqli_fetch_array($data)) {
 			?>
 
-				<table class="table">
+				<table class="table" id="tb-transaksi">
 					<tr>
-						<td width="10%">Nama Pelanggan</td>
+						<td width="15%">Nama Pelanggan</td>
 						<td><?php echo $d['customer_name']; ?></td>
 					</tr>
 					<tr>
@@ -47,32 +46,47 @@
 						<td>
 							<?php
 							if ($d['paidstatus'] == "0") {
-								echo "<div>DIPINJAM</div>";
+								echo "<div>BELUM DIBAYAR</div>";
 							} else if ($d['paidstatus'] == "1") {
-								echo "<div>SELESAI</div>";
+								echo "<div>LUNAS</div>";
 							} ?>
 						</td>
 					</tr>
-					<!-- <tr>
-						<td width="10%">Total Bayar</td>
-						<td>
-							<?php
-							if ($d['paidstatus']  == "0") {
-								echo "<div>DIPINJAM</div>";
-							} else if ($d['paidstatus'] == "1") {
-								echo "<div>SELESAI</div>";
-							} ?>
-						</td>
-					</tr> -->
-					<tr>
-						<td><a href="transaksi.php">Kembali</a></td>
-					</tr>
-
-
-				<?php
-			}
-				?>
 				</table>
+			<?php
+			}
+			?>
+			<table>
+				<tr>
+					<th width="1%">No</th>
+					<th width="15%">Nama Produk</th>
+					<th width="10%">Jumlah</th>
+				</tr>
+				<?php
+				include '../koneksi.php';
+				$product_id = $_GET['product_id'];
+				$query = mysqli_query($koneksi, "SELECT d.*, p.* FROM tb_detail AS d LEFT JOIN tb_product AS p ON d.product_id = p.product_id where product_id='$product_id'");
+				$no = 1;
+				while ($d = mysqli_fetch_array($query)) {
+				?>
+					<tr>
+						<td><?php echo $no++; ?></td>
+						<td><?php echo $d['product_name']; ?></td>
+						<td><?php echo $d['quantity']; ?></td>
+					</tr>
+					<tr>
+						<td>
+							Total Bayar
+						</td>
+						<td>
+
+						</td>
+					</tr>
+				<?php
+				}
+				?>
+			</table>
+			<a href="transaksi.php">Kembali</a>
 		</div>
 	</div>
 </div>
