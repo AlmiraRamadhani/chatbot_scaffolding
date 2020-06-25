@@ -103,11 +103,11 @@
                     <tbody>
                         <?php
                         include '../koneksi.php';
-                        $result = mysqli_query($koneksi, "SELECT * FROM tb_vektor");
+                        $result = mysqli_query($koneksi, "SELECT * FROM tb_vektor as v, tb_dokumen as d on v.doc_id=d.id");
                         while ($row = mysqli_fetch_array($result)) {
                         ?>
                             <tr>
-                                <td><?= $row['doc_id']; ?></td>
+                                <td><?= $row['dokumen']; ?></td>
                                 <td><?= $row['panjang']; ?></td>
                             </tr>
                         <?php } ?>

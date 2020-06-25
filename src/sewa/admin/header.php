@@ -36,11 +36,10 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.php"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-file"></i> Master Transaksi <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-file"></i> Master Penyewaan <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="barang.php"><i class="glyphicon glyphicon-file"></i> Barang</a></li>
 							<li><a href="pelanggan.php"><i class="glyphicon glyphicon-user"></i> Pelanggan</a></li>
-							<li><a href="komentar.php"><i class="glyphicon glyphicon-user"></i> Komentar Customer</a></li>
 							<li><a href="transaksi.php"><i class="glyphicon glyphicon-user"></i> Transaksi</a></li>
 						</ul>
 					</li>
@@ -49,7 +48,6 @@
 						<ul class="dropdown-menu">
 							<li><a href="master.php"><i class="glyphicon glyphicon-user"></i>Jawaban</a></li>
 							<li><a href="master_hitung.php"><i class="glyphicon glyphicon-user"></i>Hitung TF-IDF</a></li>
-							<li><a href="master_chat.php"><i class="glyphicon glyphicon-user"></i>Chatbot</a></li>
 							<li><a href="master_pertanyaan.php"><i class="glyphicon glyphicon-user"></i>History Pertanyaan</a></li>
 						</ul>
 					</li>
@@ -58,7 +56,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-wrench"></i> Pengaturan <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="ganti_password.php"><i class="glyphicon glyphicon-lock"></i> Ganti Password</a></li>
-							<li><a href="../logout.php"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
+							<li><a href="logout.php"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
 						</ul>
 					</li>
 

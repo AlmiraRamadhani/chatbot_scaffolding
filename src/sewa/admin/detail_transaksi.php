@@ -12,7 +12,6 @@
 			$data = mysqli_query($koneksi, "SELECT t.*, c.* FROM tb_transaction AS t LEFT JOIN tb_customer AS c ON t.id_cust = c.customer_id where id='$id'");
 			while ($d = mysqli_fetch_array($data)) {
 			?>
-<<<<<<< HEAD
 				<table class="table" id="tb-transaksi">
 					<tr>
 						<td width="15%">Nama Pelanggan</td>
@@ -30,45 +29,25 @@
 						<td width="10%">Status Pinjam</td>
 						<td>
 							<?php
-=======
-
-			<table class="table" id="tb-transaksi">
-				<tr>
-					<td width="15%">Nama Pelanggan</td>
-					<td><?php echo $d['customer_name']; ?></td>
-				</tr>
-				<tr>
-					<td width="10%">Tanggal Pinjam</td>
-					<td><?php echo $d['fdate']; ?></td>
-				</tr>
-				<tr>
-					<td width="10%">Tanggal Selesai</td>
-					<td><?php echo $d['ldate']; ?></td>
-				</tr>
-				<tr>
-					<td width="10%">Status Pinjam</td>
-					<td>
-						<?php
->>>>>>> 3223fb6d01644334af47b804a6bf5fe8ddded557
 							if ($d['loanstatus'] == "0") {
 								echo "<div>DIPINJAM</div>";
 							} else if ($d['loanstatus'] == "1") {
 								echo "<div>SELESAI</div>";
 							} ?>
-						</>
-				</tr>
-				<tr>
-					<td width="10%">Status Bayar</td>
-					<td>
-						<?php
+							</>
+					</tr>
+					<tr>
+						<td width="10%">Status Bayar</td>
+						<td>
+							<?php
 							if ($d['paidstatus'] == "0") {
 								echo "<div>BELUM DIBAYAR</div>";
 							} else if ($d['paidstatus'] == "1") {
 								echo "<div>LUNAS</div>";
 							} ?>
-					</td>
-				</tr>
-			</table>
+						</td>
+					</tr>
+				</table>
 			<?php
 			}
 			?>
@@ -81,17 +60,12 @@
 				</tr>
 				<?php
 				include '../koneksi.php';
-<<<<<<< HEAD
 				// $query = mysqli_query($koneksi, "SELECT d.*, p.*, t.* FROM tb_detail AS d 	JOIN tb_product AS p ON d.product_id = p.product_id, JOIN tb_transaction AS t ON d.transaction_id = t.id WHERE transaction_id = '$id'");
 				$query = mysqli_query($koneksi, "SELECT * FROM tb_detail as d JOIN tb_product as p ON d.product_id=p.product_id JOIN tb_transaction as t ON t.id=d.transaction_id WHERE transaction_id = '$id'");
-=======
-				$query = mysqli_query($koneksi, "SELECT d.*, p.* FROM tb_detail AS d LEFT JOIN tb_product AS p ON d.product_id = p.product_id WHERE transaction_id = '$id'");
->>>>>>> 3223fb6d01644334af47b804a6bf5fe8ddded557
 				$no = 1;
 				$total = 0;
 				while ($p = mysqli_fetch_array($query)) {
 				?>
-<<<<<<< HEAD
 					<tr>
 						<td><?php echo $no++; ?></td>
 						<td><?= $p['product_name']; ?></td>
@@ -115,31 +89,6 @@
 							?>
 						</td>
 					</tr>
-=======
-				<tr>
-					<td><?php echo $no++; ?></td>
-					<td><?= $p['product_name']; ?></td>
-					<td><?php echo $p['quantity']; ?></td>
-					<td>
-						<?php
-							$awal = strtotime($d['fdate']);
-							$akhir = strtotime($d['ldate']);
-							$diff = $akhir - $awal;
-							$juml_hari = round($diff / 86400);
-
-							if ($juml_hari <= 7) {
-								$harga = $p['product_owp'] * $p['quantity'];
-							} elseif ($juml_hari > 7 && $hari <= 14) {
-								$harga = $p['product_twp'] * $p['quantity'];
-							} elseif ($juml_hari > 14 && $hari <= 30) {
-								$harga = $p['product_omp'] * $p['quantity'];
-							}
-
-							echo 'Rp. ' . number_format($harga, 0, ',', '.');
-							?>
-					</td>
-				</tr>
->>>>>>> 3223fb6d01644334af47b804a6bf5fe8ddded557
 				<?php
 					$total += $harga;
 				}

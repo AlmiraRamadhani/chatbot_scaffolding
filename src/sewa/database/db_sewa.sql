@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2020 at 06:15 PM
+-- Generation Time: Jun 24, 2020 at 11:46 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -40,7 +40,7 @@ CREATE TABLE `tb_admin` (
 --
 
 INSERT INTO `tb_admin` (`admin_id`, `admin_name`, `admin_username`, `admin_password`) VALUES
-(1, 'Trianta Almira Ramadhani', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(1, 'Trianta Almira Ramadhani', 'admin', '827ccb0eea8a706c4c34a16891f84e7b');
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,15 @@ INSERT INTO `tb_cache` (`id`, `query`, `doc_id`, `nilai`) VALUES
 (16, 'pinjam main frame', 9, 0.192847),
 (17, 'menyewa main frame', 9, 0.192847),
 (18, 'mau meminjam scaffolding', 0, 0),
-(19, 'mau sewa scaffolding', 0, 0);
+(19, 'mau sewa scaffolding', 0, 0),
+(20, 'buka jam berapa?', 5, 0.365148),
+(21, 'buka jam berapa?', 6, 0.264906),
+(22, 'buka hari apa?', 5, 0.258198),
+(23, 'buka hari apa?', 6, 0.374634),
+(24, 'buka hari apa?', 7, 0.277349),
+(25, 'libur hari apa?', 6, 0.146943),
+(26, 'libur hari apa?', 7, 0.707106),
+(27, 'mau beli scaffolding', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -124,8 +132,7 @@ CREATE TABLE `tb_customer` (
 INSERT INTO `tb_customer` (`customer_id`, `customer_nik`, `customer_name`, `customer_address`, `customer_phone`, `customer_company`, `customer_project`) VALUES
 (2, '3574034301980001', 'Regza Wibowo', 'Malang', '081330285905', 'PT. BUDI BAKTI PRIMA', 'PEMBANGUNAN PLTU KALTIM2 -  DI BONTANG LESTARI - SEKAMBIN'),
 (3, '2147483647', 'Trianta Almira Ramadhani', 'Probolinggo', '2147483647', 'PT. BUDI BAKTI PRIMA', 'PEMBANGUNAN PLTU KALTIM2 -  DI BONTANG LESTARI - SEKAMBING'),
-(5, '3574034301920001', 'Wella Yusmia', 'Jl. Gatot Subroto Gang 9', '085749972727', 'PT. BCA Tbk.', 'Perluasan Lahan'),
-(6, '', '', '', '', '', '');
+(5, '3574034301920001', 'Wella Yusmia', 'Jl. Gatot Subroto Gang 9', '085749972727', 'PT. BCA Tbk.', 'Perluasan Lahan');
 
 -- --------------------------------------------------------
 
@@ -180,7 +187,7 @@ INSERT INTO `tb_dokumen` (`id`, `dokumen`) VALUES
 (5, 'Penyewaan buka pukul 8 pagi'),
 (6, 'Penyewaan buka pada hari Senin, Selasa, Rabu, Kamis, dan Sabtu'),
 (7, 'hari jumat dan minggu libur'),
-(9, 'harga sewa main frame 1,7 selama 1 minggu 30.000 rupiah, selama 2 minggu 40.000 rupiah, selama 1 bulan 50.000 rupiah'),
+(9, 'harga sewa1 set main frame 1,7 selama 1 minggu 30.000 rupiah, selama 2 minggu 40.000 rupiah, selama 1 bulan 50.000 rupiah'),
 (11, 'scaffolding yang tersedia diantaranya 1 set main frame 1,7 meter, 1 set main frame 1,9 meter, cat walk, tangga, jack base 60 cm, pipa support, u head jack 60 cm, roda, leader 0,9 dengan join pin, leader 0,9 tanpa join pin');
 
 -- --------------------------------------------------------
@@ -202,42 +209,44 @@ CREATE TABLE `tb_index` (
 --
 
 INSERT INTO `tb_index` (`id`, `term`, `id_doc`, `jumlah`, `bobot`) VALUES
-(1, 'selamat', 1, 1, 0.693147),
-(2, 'pagi', 1, 1, 1.38629),
-(3, 'selamat', 2, 1, 0.693147),
-(4, 'siang', 2, 1, 2.07944),
-(5, 'selamat', 3, 1, 0.693147),
-(6, 'sore', 3, 1, 2.07944),
-(7, 'selamat', 4, 1, 0.693147),
-(8, 'malam', 4, 1, 2.07944),
-(9, 'penyewaan', 5, 1, 1.38629),
-(10, 'buka', 5, 1, 1.38629),
-(11, 'pukul', 5, 1, 2.07944),
-(12, '8', 5, 1, 2.07944),
-(13, 'pagi', 5, 1, 1.38629),
-(14, 'penyewaan', 6, 1, 1.38629),
-(15, 'buka', 6, 1, 1.38629),
-(16, 'hari', 6, 1, 1.38629),
-(17, 'senin', 6, 1, 2.07944),
-(18, 'selasa', 6, 1, 2.07944),
-(19, 'rabu', 6, 1, 2.07944),
-(20, 's', 6, 1, 2.07944),
-(21, 'sabtu', 6, 1, 2.07944),
-(22, 'hari', 7, 1, 1.38629),
-(23, 'jumat', 7, 1, 2.07944),
-(24, 'minggu', 7, 1, 1.38629),
-(25, 'libur', 7, 1, 2.07944),
-(26, 'harga', 9, 1, 2.07944),
-(27, 'sewa', 9, 1, 2.07944),
-(28, 'main', 9, 1, 2.07944),
-(29, 'frame', 9, 1, 2.07944),
-(30, '1', 9, 2, 4.15888),
-(31, '7', 9, 1, 2.07944),
-(32, 'selama', 9, 1, 2.07944),
-(33, 'minggu', 9, 1, 1.38629),
-(34, '30', 9, 1, 2.07944),
-(35, '000', 9, 1, 2.07944),
-(36, 'rupiah', 9, 1, 2.07944);
+(1, 'selamat', 1, 1, 0),
+(2, 'pagi', 1, 1, 0),
+(3, 'selamat', 2, 1, 0),
+(4, 'siang', 2, 1, 0),
+(5, 'selamat', 3, 1, 0),
+(6, 'sore', 3, 1, 0),
+(7, 'selamat', 4, 1, 0),
+(8, 'malam', 4, 1, 0),
+(9, 'penyewaan', 5, 1, 0),
+(10, 'buka', 5, 1, 0),
+(11, 'pukul', 5, 1, 0),
+(12, '8', 5, 1, 0),
+(13, 'pagi', 5, 1, 0),
+(14, 'penyewaan', 6, 1, 0),
+(15, 'buka', 6, 1, 0),
+(16, 'hari', 6, 1, 0),
+(17, 'senin', 6, 1, 0),
+(18, 'selasa', 6, 1, 0),
+(19, 'rabu', 6, 1, 0),
+(20, 's', 6, 1, 0),
+(21, 'sabtu', 6, 1, 0),
+(22, 'hari', 7, 1, 0),
+(23, 'jumat', 7, 1, 0),
+(24, 'minggu', 7, 1, 0),
+(25, 'libur', 7, 1, 0),
+(26, 'harga', 9, 1, 0),
+(27, 'sewa1', 9, 1, 0),
+(28, 'set', 9, 1, 0),
+(29, 'main', 9, 1, 0),
+(30, 'frame', 9, 1, 0),
+(31, '1', 9, 2, 0),
+(32, '7', 9, 1, 0),
+(33, 'selama', 9, 2, 0),
+(34, 'minggu', 9, 1, 0),
+(35, '30', 9, 1, 0),
+(36, '000', 9, 1, 0),
+(37, 'rupiah', 9, 1, 0),
+(38, '2', 9, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -306,19 +315,18 @@ CREATE TABLE `tb_transaction` (
   `fdate` date NOT NULL,
   `ldate` date NOT NULL,
   `loanstatus` varchar(20) NOT NULL,
-  `paidstatus` varchar(20) NOT NULL,
-  `totalharga` int(11) NOT NULL
+  `paidstatus` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_transaction`
 --
 
-INSERT INTO `tb_transaction` (`id`, `id_cust`, `fdate`, `ldate`, `loanstatus`, `paidstatus`, `totalharga`) VALUES
-(7, 3, '2020-06-01', '2020-06-07', '0', '1', 0),
-(8, 3, '2020-06-04', '2020-06-10', '0', '0', 0),
-(9, 2, '2020-06-01', '2020-06-14', '0', '0', 0),
-(10, 5, '2020-06-01', '2020-06-30', '0', '0', 0);
+INSERT INTO `tb_transaction` (`id`, `id_cust`, `fdate`, `ldate`, `loanstatus`, `paidstatus`) VALUES
+(7, 3, '2020-06-01', '2020-06-07', '0', '1'),
+(8, 3, '2020-06-04', '2020-06-10', '0', '0'),
+(9, 2, '2020-06-01', '2020-06-14', '0', '0'),
+(10, 5, '2020-06-01', '2020-06-30', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -336,14 +344,15 @@ CREATE TABLE `tb_vektor` (
 --
 
 INSERT INTO `tb_vektor` (`doc_id`, `panjang`) VALUES
-(1, 1.54992),
-(2, 2.19192),
-(3, 2.19192),
-(4, 2.19192),
-(5, 3.79652),
-(6, 5.23314),
-(7, 3.53437),
-(9, 7.62461);
+(1, 1.70876),
+(2, 2.34209),
+(3, 2.34209),
+(4, 2.34209),
+(5, 4.05491),
+(6, 5.56108),
+(7, 3.76564),
+(9, 14.2339),
+(11, 18.0639);
 
 --
 -- Indexes for dumped tables
@@ -429,7 +438,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tb_comment`
@@ -459,7 +468,7 @@ ALTER TABLE `tb_dokumen`
 -- AUTO_INCREMENT for table `tb_index`
 --
 ALTER TABLE `tb_index`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tb_product`
@@ -483,7 +492,7 @@ ALTER TABLE `tb_transaction`
 -- AUTO_INCREMENT for table `tb_vektor`
 --
 ALTER TABLE `tb_vektor`
-  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
